@@ -6,12 +6,14 @@
                 <a href="#" class="text-gray-700 hover:text-blue-500">Home</a>
                 <a href="#" class="text-gray-700 hover:text-blue-500">About</a>
                 <a href="#" class="text-gray-700 hover:text-blue-500">Contact</a>
-                
-                <form action="{{ route('welcome.mail', auth()->user()->id) }}" method="POST">
-                    @csrf
-                    <button type="submit" class="text-blue-700 text-lg underline hover:text-blue-500">Welcome Mail
-                        Send</button>
-                </form>
+
+                @auth
+                    <form action="{{ route('welcome.mail', auth()->user()->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="text-blue-700 text-lg underline hover:text-blue-500">Welcome Mail
+                            Send</button>
+                    </form>
+                @endauth
 
 
                 @guest
